@@ -4,9 +4,11 @@ Este sitio contiene ejemplos y códigos del curso de Métodos Numéricos 2025.
 
 ## Códigos disponibles
 
-- Newton-Raphson
-- Iteración Simple
-- Jacobiano
+- [Fractal de Newton-Raphson](newton_fractal.md)
+- [Newton-Raphson (Versión Segura)](newtonRaphson_segura.md)
+- [Iteración Simple](newton_simple.md)
+- [Newton-Raphson para Sistemas No Lineales](newtonRaphson_sistema.md)
+- [Cálculo del Jacobiano (diferencias finitas)](jacobian.md)
 
 Puedes verlos en la sección "Códigos" del menú.
 
