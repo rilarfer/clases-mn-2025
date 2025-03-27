@@ -1,0 +1,127 @@
+\documentclass[12pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[spanish]{babel}
+\usepackage{amsmath,amssymb}
+\usepackage{geometry}
+\geometry{letterpaper, top=3cm, left=1.5cm, right=1.5cm, bottom=2.5cm}
+\usepackage{graphicx}
+\usepackage{eso-pic}
+
+\author{Ricardo Largaespada}
+\title{\textbf{Métodos Numéricos | Laboratorio 2}}
+\date{20 de marzo de 2025}
+
+\begin{document}
+
+\maketitle
+
+\AddToShipoutPictureBG{\includegraphics[width=\paperwidth,height=\paperheight]{fondo.pdf}}
+
+\section*{Introducción}
+
+Este trabajo contiene varias partes en las que comprobamos la asimilación de conceptos y métodos numéricos explicados en clase. Estos métodos a veces contienen una gran cantidad de cálculos que sólo pueden ser realizados mediante \textbf{software}. El programa \texttt{Matlab} (u otro lenguaje de programación numérica) es una excelente herramienta que, a la vez que nos permite realizar los cálculos con extraordinaria eficacia, también nos ayuda a profundizar en los conocimientos teóricos, ya que es imposible programar sin comprender lo que se está haciendo. Los conceptos y métodos para este primer trabajo están relacionados con:
+
+\begin{itemize}
+  \item Funciones elementales: polinomios. Concepto de derivada.
+  \item Aplicación de las derivadas a ciertos métodos de resolución de ecuaciones escalares: Método de Newton.
+\end{itemize}
+
+\subsection*{Instrucciones}
+
+Las siguientes instrucciones son de \textbf{obligado cumplimiento} en este trabajo. El hecho de no cumplir con alguna de ellas es causa de rechazo del trabajo. Como estamos en proceso de aprendizaje, los trabajos rechazados se podrán entregar nuevamente (al menos una vez), pero la calificación a la que se opta ya no será la misma. Se recomienda no abusar de esta posibilidad.
+
+\begin{enumerate}
+  \item \textbf{Estructura de archivos y comentarios.}  
+  Para realizar este trabajo, debes construir los ficheros de \texttt{Matlab} (o el entorno de programación que uses) que se indiquen, además de otros que consideres necesarios. La estructura de ficheros, nombres y carpetas debe ser la que se pida. Los códigos deben contener comentarios (\texttt{\%}) en la cantidad y calidad adecuadas, de manera que dichos comentarios permitan entender qué hacen. Tanto los códigos como los comentarios serán evaluables.
+
+  \item \textbf{Compilación y ejecución sin errores.}  
+  Los ficheros no pueden contener errores de compilación. Si el profesor los ejecuta en su ordenador, la compilación debe funcionar. En caso de que algún fichero no funcione, el trabajo será rechazado en su totalidad.
+  
+  \item \textbf{Secuencia de partes y validación.}  
+  No comiences una parte hasta haber terminado la anterior. El trabajo está diseñado para que cada vez que se calcula algo, a continuación se someta a prueba para ver si se obtienen los resultados esperados. Si notas que algo no encaja, no continúes con las partes que dependan de ese cálculo erróneo; busca el error o consulta al profesor.
+
+  \item \textbf{Salida en Command Window y memoria en el propio fichero.}  
+  La ejecución debe mostrar en Command Window los resultados que pida el trabajo. El alumno debe copiar esos resultados y pegarlos en el propio fichero, justo a continuación del código que los produce, y marcarlos en forma de comentario (\texttt{\%}) para que el fichero sea compilable. Los resultados intermedios que no sean objetivos finales del cálculo deben ir bloqueados con \texttt{;}.
+
+  \item \textbf{No usar valores numéricos directos.}  
+  Nunca debes usar valores numéricos directamente en los códigos. Dichos valores deben guardarse en variables globales y usar esas variables en los códigos. Esto facilita la modificación de parámetros en un único lugar, si fuera necesario.
+
+  \item \textbf{Formato numérico.}  
+  Usa el formato (\texttt{short}, \texttt{long}, \texttt{rat}, \texttt{g}, \texttt{e}, etc.) acorde con lo que se pretende calcular. Por ejemplo, \texttt{format long} si buscas un valor aproximado de una raíz, o \texttt{format short e} si te interesan errores de magnitud reducida.
+
+  \item \textbf{Funciones internas y ficheros de función.}  
+  Salvo indicación contraria, las funciones pueden construirse mediante:
+  \begin{itemize}
+    \item El uso de \texttt{@} (funciones anónimas), si son sencillas.
+    \item Como funciones auxiliares al final de un fichero \texttt{.m}.
+    \item Como ficheros de función independientes (con el mismo nombre que la función principal) si se van a llamar repetidamente.
+  \end{itemize}
+
+  \item \textbf{Gráficas y guardado de figuras.}  
+  Si la ejecución produce una gráfica, se guardará en un fichero con extensión \texttt{.fig}. El fichero \texttt{Figurak.fig} se entregará en la carpeta que corresponda dentro de la estructura de trabajo.
+
+  \item \textbf{Estructura de carpetas comprimida.}  
+  La estructura de carpetas que se pida debe comprimirse (\texttt{.zip} o \texttt{.rar}) y nombrarse \texttt{CARNET\_APELLIDONOMBRE}, donde:
+  \begin{itemize}
+    \item \texttt{CARNET} es el código de carnet de cada alumno,
+    \item \texttt{APELLIDONOMBRE} es Primer Apellido (en mayúsculas) seguido del Nombre (sin guiones ni acentos).
+  \end{itemize}
+  Por ejemplo, si te llamas \textit{Luis Antonio Rodríguez Fernández} y tu carnet es 2009-29308U, tu fichero se llamaría \texttt{29308\_RODRIGUEZLUIS.zip}.
+
+  \item \textbf{Memoria del trabajo.}  
+  Este trabajo está basado en conceptos y desarrollos explicados en clase. Debes redactar una \textbf{memoria} que contenga esa teoría matemática, intercalada con las experiencias personales o dificultades que hayas encontrado (sobre matemáticas y software). La memoria debe ser redactada con un estilo personal, sin copiar textualmente párrafos de apuntes o libros. Usa lenguaje matemático apropiado (fórmulas y desarrollos combinados con redacción). Contesta a las preguntas que se formulan de manera razonada.  
+  La memoria puede ser manuscrita o digital, pero \textbf{sin tachones} y escaneada en formato PDF con suficiente calidad.
+
+  \item \textbf{Plagios no permitidos.}  
+  Los resultados numéricos varían según la fecha de nacimiento de cada alumno. No se permiten plagios totales o parciales. En caso de que el profesor advierta coincidencias razonables entre dos o más trabajos, se entrevistará a los alumnos para que demuestren haber asimilado los contenidos. Si alguno no lo hace, todos los trabajos implicados se rechazarán y la Evaluación quedará suspendida para ellos. Ayudarse mutuamente es positivo, pero no compartas tu trabajo completo para evitar el riesgo de copias literales.
+
+\end{enumerate}
+
+\vspace{1em}
+\hrule
+\vspace{1em}
+
+\section*{Parte 1}
+
+Crea en tu ordenador una subcarpeta de \texttt{Trabajo 1} llamada \texttt{Parte 1}, donde irás guardando todos los ficheros de esta parte.
+
+\subsection*{Construcción del polinomio}
+
+Considera tu fecha de nacimiento (en el formato YYYYMMDD), elévalo al cuadrado y obtén sus dígitos en formato largo. Por ejemplo, si naciste el 26 de agosto de 1996 es \texttt{19960826}, entonces
+\[
+  \mathrm{YYYYMMDD}^2 = 398434574602276 = d_1 d_2 d_3 \dots
+\]
+Tomamos los primeros seis grupos de dos cifras y, con cada grupo, construimos un número en el intervalo \([-1, 1]\). Cada número así construido será un coeficiente de un polinomio de grado 5:
+\[
+  P(x) \;=\; ( -1)^{\,d_1}\,0.\!d_1d_2\,x^5
+       \;+\; (- 1)^{\,d_3}\,0.\!d_3d_4\,x^4
+       \;+\; (- 1)^{\,d_5}\,0.\!d_5d_6\,x^3 + \dots
+\]
+
+\begin{itemize}
+  \item \textbf{Representa gráficamente} el polinomio en un intervalo donde se aprecie con claridad su comportamiento global y sus puntos notables (raíces, máximos, mínimos, puntos de inflexión, comportamiento hacia $\pm \infty$).  
+  \item La gráfica debe contener ejes, título (\texttt{title}), etiquetas (\texttt{xlabel}, \texttt{ylabel}), marcadores en los puntos notables y una leyenda que explique el contenido (\texttt{legend}). Guarda la figura final en \texttt{Figura1.fig} y el código en \texttt{Figura1.m}.
+  \item Es probable que el polinomio solo tenga una raíz real, pero, ¿podría tener exactamente dos raíces reales? Responde en la memoria.
+\end{itemize}
+
+\subsection*{Puntos notables con el método de Newton}
+
+\begin{itemize}
+  \item Aplica el \textbf{método de Newton} (con al menos 6 iteraciones) para calcular los puntos notables del polinomio (raíces, máximos, mínimos, puntos de inflexión).  
+  \item Compara los resultados con \texttt{roots} o \texttt{fzero}.  
+  \item En una de las ejecuciones, además del punto buscado, muestra la lista de iteraciones (en \texttt{format long}) y la lista de errores relativos , tomando como valor exacto el que proporcione \texttt{roots} o \texttt{fzero}.
+  \item Guarda los códigos en \texttt{PuntosNotables.m}. Para importarlos en \texttt{Figura1.m}, basta con ejecutar \texttt{PuntosNotables;} y usar las variables.
+\end{itemize}
+
+\subsection*{Raíces complejas}
+
+\begin{itemize}
+  \item Es posible que el polinomio tenga raíces complejas (no se verán en la gráfica anterior).  
+  \item Comprueba que el método de Newton funciona también para una raíz compleja. Toma un valor $x_0$ complejo a una distancia no menor de 0.7 de la raíz que desees.  
+  \item Los números complejos en \texttt{Matlab} se representan explícitamente (por ejemplo \texttt{1+1i}).
+  \item Comenta los resultados en relación con la velocidad del método.
+  \item Guarda los códigos en \texttt{Raizcompleja.m}.
+\end{itemize}
+
+\end{document}
