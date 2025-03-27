@@ -9,21 +9,25 @@
       
       
       
+        <link rel="prev" href="../newtonRaphson_segura/">
       
       
-      <link rel="icon" href="/assets/images/favicon.png">
+        <link rel="next" href="../newtonRaphson_sistema/">
+      
+      
+      <link rel="icon" href="../assets/images/favicon.png">
       <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.9">
     
     
       
-        <title>Clases Métodos Numéricos 2025</title>
+        <title>Newton Simple - Clases Métodos Numéricos 2025</title>
       
     
     
-      <link rel="stylesheet" href="/assets/stylesheets/main.4af4bdda.min.css">
+      <link rel="stylesheet" href="../assets/stylesheets/main.4af4bdda.min.css">
       
         
-        <link rel="stylesheet" href="/assets/stylesheets/palette.06af60db.min.css">
+        <link rel="stylesheet" href="../assets/stylesheets/palette.06af60db.min.css">
       
       
 
@@ -42,7 +46,7 @@
       
     
     
-    <script>__md_scope=new URL("/",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
       
 
@@ -67,6 +71,11 @@
     <label class="md-overlay" for="__drawer"></label>
     <div data-md-component="skip">
       
+        
+        <a href="#newton-raphson-simple" class="md-skip">
+          Skip to content
+        </a>
+      
     </div>
     <div data-md-component="announce">
       
@@ -79,7 +88,7 @@
 
 <header class="md-header md-header--shadow" data-md-component="header">
   <nav class="md-header__inner md-grid" aria-label="Header">
-    <a href="/." title="Clases Métodos Numéricos 2025" class="md-header__button md-logo" aria-label="Clases Métodos Numéricos 2025" data-md-component="logo">
+    <a href=".." title="Clases Métodos Numéricos 2025" class="md-header__button md-logo" aria-label="Clases Métodos Numéricos 2025" data-md-component="logo">
       
   
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12.42 5.29c-1.1-.1-2.07.71-2.17 1.82L10 10h2.82v2h-3l-.44 5.07A4.001 4.001 0 0 1 2 18.83l1.5-1.5c.33 1.05 1.46 1.64 2.5 1.3.78-.24 1.33-.93 1.4-1.74L7.82 12h-3v-2H8l.27-3.07a4.01 4.01 0 0 1 4.33-3.65c1.26.11 2.4.81 3.06 1.89l-1.5 1.5c-.25-.77-.93-1.31-1.74-1.38M22 13.65l-1.41-1.41-2.83 2.83-2.83-2.83-1.43 1.41 2.85 2.85-2.85 2.81 1.43 1.41 2.83-2.83 2.83 2.83L22 19.31l-2.83-2.81z"/></svg>
@@ -99,7 +108,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              
+              Newton Simple
             
           </span>
         </div>
@@ -200,7 +209,7 @@
 
 <nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
   <label class="md-nav__title" for="__drawer">
-    <a href="/." title="Clases Métodos Numéricos 2025" class="md-nav__button md-logo" aria-label="Clases Métodos Numéricos 2025" data-md-component="logo">
+    <a href=".." title="Clases Métodos Numéricos 2025" class="md-nav__button md-logo" aria-label="Clases Métodos Numéricos 2025" data-md-component="logo">
       
   
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12.42 5.29c-1.1-.1-2.07.71-2.17 1.82L10 10h2.82v2h-3l-.44 5.07A4.001 4.001 0 0 1 2 18.83l1.5-1.5c.33 1.05 1.46 1.64 2.5 1.3.78-.24 1.33-.93 1.4-1.74L7.82 12h-3v-2H8l.27-3.07a4.01 4.01 0 0 1 4.33-3.65c1.26.11 2.4.81 3.06 1.89l-1.5 1.5c-.25-.77-.93-1.31-1.74-1.38M22 13.65l-1.41-1.41-2.83 2.83-2.83-2.83-1.43 1.41 2.85 2.85-2.85 2.81 1.43 1.41 2.83-2.83 2.83 2.83L22 19.31l-2.83-2.81z"/></svg>
@@ -218,7 +227,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/." class="md-nav__link">
+      <a href=".." class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -236,17 +245,19 @@
       
   
   
+    
   
   
+  
     
     
     
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" checked>
         
           
           <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
@@ -261,7 +272,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_2">
             <span class="md-nav__icon md-icon"></span>
             Códigos
@@ -275,7 +286,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/newtonRaphson_segura/" class="md-nav__link">
+      <a href="../newtonRaphson_segura/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -294,10 +305,19 @@
                 
   
   
+    
   
   
-    <li class="md-nav__item">
-      <a href="/newton_simple/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         
   
   <span class="md-ellipsis">
@@ -307,6 +327,7 @@
   
 
       </a>
+      
     </li>
   
 
@@ -319,7 +340,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/newtonRaphson_sistema/" class="md-nav__link">
+      <a href="../newtonRaphson_sistema/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -341,7 +362,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/jacobian/" class="md-nav__link">
+      <a href="../jacobian/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -406,7 +427,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/bisect.m" class="md-nav__link">
+      <a href="../bisect.m" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -428,7 +449,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/epsilon_maquina.m" class="md-nav__link">
+      <a href="../epsilon_maquina.m" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -450,7 +471,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/jacobian.m" class="md-nav__link">
+      <a href="../jacobian.m" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -472,7 +493,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/newtonRaphson_segura.m" class="md-nav__link">
+      <a href="../newtonRaphson_segura.m" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -494,7 +515,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/newtonRaphson_sistema.m" class="md-nav__link">
+      <a href="../newtonRaphson_sistema.m" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -516,7 +537,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/newton_simple.m" class="md-nav__link">
+      <a href="../newton_simple.m" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -538,7 +559,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/rootsearch.m" class="md-nav__link">
+      <a href="../rootsearch.m" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -577,6 +598,8 @@
   
   
   
+    
+  
   
 </nav>
                   </div>
@@ -588,8 +611,54 @@
             <div class="md-content" data-md-component="content">
               <article class="md-content__inner md-typeset">
                 
-  <h1>404 - Not found</h1>
+                  
 
+
+
+<h1 id="newton-raphson-simple">Newton-Raphson Simple</h1>
+<div class="highlight"><span class="filename">newton_simple.m</span><pre><span></span><code><span class="k">function</span><span class="w"> </span><span class="nf">[root, numIter] = newton_simple</span><span class="p">(</span>func, dfunc, x, tol<span class="p">)</span>
+<span class="c">% Versión simple del método de Newton-Raphson.</span>
+<span class="c">% USO:</span>
+<span class="c">%   [root, numIter] = newton_simple(func, dfunc, x, tol)</span>
+<span class="c">% ENTRADAS:</span>
+<span class="c">%   func  - función manejable que evalúa f(x)</span>
+<span class="c">%   dfunc - función manejable que evalúa f&#39;(x)</span>
+<span class="c">%   x     - valor inicial (x0)</span>
+<span class="c">%   tol   - tolerancia al error (opcional, por defecto 1.0e6*eps)</span>
+<span class="c">% SALIDAS:</span>
+<span class="c">%   root     - aproximación de la raíz</span>
+<span class="c">%   numIter  - número de iteraciones realizadas</span>
+
+<span class="k">if</span><span class="w"> </span><span class="nb">nargin</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mi">4</span><span class="p">;</span><span class="w"> </span><span class="n">tol</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="mf">1.0e6</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="nb">eps</span><span class="p">;</span><span class="w"> </span><span class="k">end</span><span class="w">    </span><span class="c">% Establecer tolerancia por defecto</span>
+<span class="n">numIter</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<span class="k">for</span><span class="w"> </span><span class="nb">i</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="mi">1</span><span class="p">:</span><span class="mi">50</span><span class="w">                   </span><span class="c">% Máximo de 50 iteraciones</span>
+<span class="w">    </span><span class="n">fx</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nb">feval</span><span class="p">(</span><span class="n">func</span><span class="p">,</span><span class="w"> </span><span class="n">x</span><span class="p">);</span><span class="w">      </span><span class="c">% Evaluar función</span>
+<span class="w">    </span><span class="n">dfx</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nb">feval</span><span class="p">(</span><span class="n">dfunc</span><span class="p">,</span><span class="w"> </span><span class="n">x</span><span class="p">);</span><span class="w">    </span><span class="c">% Evaluar derivada</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="n">dfx</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">0</span><span class="w">               </span><span class="c">% Evita división por cero</span>
+<span class="w">        </span><span class="n">root</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nb">NaN</span><span class="p">;</span><span class="w"> </span><span class="k">return</span>
+<span class="w">    </span><span class="k">end</span>
+<span class="w">    </span><span class="n">dx</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="o">-</span><span class="n">fx</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="n">dfx</span><span class="p">;</span><span class="w">           </span><span class="c">% Paso de Newton</span>
+<span class="w">    </span><span class="n">x</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">x</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">dx</span><span class="p">;</span><span class="w">               </span><span class="c">% Actualiza estimación</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="nb">abs</span><span class="p">(</span><span class="n">dx</span><span class="p">)</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">tol</span><span class="w">          </span><span class="c">% Criterio de convergencia</span>
+<span class="w">        </span><span class="n">root</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">x</span><span class="p">;</span><span class="w"> </span><span class="n">numIter</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nb">i</span><span class="p">;</span><span class="w"> </span><span class="k">return</span>
+<span class="w">    </span><span class="k">end</span>
+<span class="k">end</span>
+<span class="n">root</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nb">NaN</span><span class="p">;</span><span class="w">                   </span><span class="c">% No convergió en 50 iteraciones</span>
+<span class="k">end</span>
+</code></pre></div>
+
+
+
+
+
+
+
+
+
+
+
+
+                
               </article>
             </div>
           
@@ -619,10 +688,10 @@
     </div>
     
     
-    <script id="__config" type="application/json">{"base": "/", "features": ["content.code.copy"], "search": "/assets/javascripts/workers/search.f8cc74c7.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    <script id="__config" type="application/json">{"base": "..", "features": ["content.code.copy"], "search": "../assets/javascripts/workers/search.f8cc74c7.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
     
     
-      <script src="/assets/javascripts/bundle.c8b220af.min.js"></script>
+      <script src="../assets/javascripts/bundle.c8b220af.min.js"></script>
       
     
   </body>
