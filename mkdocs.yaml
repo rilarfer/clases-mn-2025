@@ -1,0 +1,25 @@
+site_name: Clases Métodos Numéricos 2025
+theme:
+  name: material
+
+nav:
+  - Inicio: index.md
+  - Códigos:
+      - Bisección: bisect.m
+      - Bisección (Ejemplo 1): bisectej1.m
+      - Derivada de Ejemplo 3.1: dfej3_1.m
+      - Resultados (diary2): diary2.m
+      - Épsilon de Máquina: epsilon_maquina.m
+      - Función de Ejemplo 3.1: fej3_1.m
+      - Función de Ejemplo 4.1: fej4_1.m
+      - Jacobiano: jacobian.m
+      - Laboratorio 2 - Ejemplo 1: lab2_ejemplo1.m
+      - Newton-Raphson Segura: newtonRaphson_segura.m
+      - Newton-Raphson para Sistemas: newtonRaphson_sistema.m
+      - Newton Simple: newton_simple.m
+      - Rootsearch: rootsearch.m
+
+markdown_extensions:
+  - codehilite
+  - pymdownx.highlight
+  - pymdownx.superfences
