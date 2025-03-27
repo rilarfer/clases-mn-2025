@@ -1,19 +1,37 @@
 site_name: Clases Métodos Numéricos 2025
+
 theme:
   name: material
+  custom_dir: overrides
+  features:
+    - content.code.copy
+  palette:
+    - scheme: default
+      primary: indigo
+      accent: indigo
+      toggle:
+        icon: material/weather-night
+        name: Cambiar a modo oscuro
+    - scheme: slate
+      primary: indigo
+      accent: indigo
+      toggle:
+        icon: material/weather-sunny
+        name: Cambiar a modo claro
+  icon:
+    logo: material/function-variant
 
 nav:
   - Inicio: index.md
   - Códigos:
+      - Newton-Raphson Segura: newtonRaphson_segura.md
+      - Newton Simple: newton_simple.md
+      - Newton-Raphson para Sistemas: newtonRaphson_sistema.md
+      - Jacobiano: jacobian.md
+  - Descarga:
       - Bisección: bisect.m
-      - Bisección (Ejemplo 1): bisectej1.m
-      - Derivada de Ejemplo 3.1: dfej3_1.m
-      - Resultados (diary2): diary2.m
       - Épsilon de Máquina: epsilon_maquina.m
-      - Función de Ejemplo 3.1: fej3_1.m
-      - Función de Ejemplo 4.1: fej4_1.m
       - Jacobiano: jacobian.m
-      - Laboratorio 2 - Ejemplo 1: lab2_ejemplo1.m
       - Newton-Raphson Segura: newtonRaphson_segura.m
       - Newton-Raphson para Sistemas: newtonRaphson_sistema.m
       - Newton Simple: newton_simple.m
@@ -23,3 +41,16 @@ markdown_extensions:
   - codehilite
   - pymdownx.highlight
   - pymdownx.superfences
+
+extra:
+  generator: false
+  social:
+    - icon: fontawesome/brands/github
+      link: https://github.com/rilarfer
+      name: GitHub rilarfer
+    - icon: fontawesome/solid/user
+      link: https://github.com/rilarfer/clases-mn-2025
+      name: Proyecto en GitHub
+  copyright:
+    text: "© 2025 Ricardo Largaespada"
+    
