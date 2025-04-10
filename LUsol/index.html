@@ -9,10 +9,10 @@
       
       
       
-        <link rel="prev" href="../newton_simple/">
+        <link rel="prev" href="../LUdec/">
       
       
-        <link rel="next" href="../jacobian/">
+        <link rel="next" href="../choleski/">
       
       
       <link rel="icon" href="../assets/images/favicon.png">
@@ -20,7 +20,7 @@
     
     
       
-        <title>Newton-Raphson para Sistemas - Clases Métodos Numéricos 2025</title>
+        <title>LUsol - Clases Métodos Numéricos 2025</title>
       
     
     
@@ -72,7 +72,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#newton-raphson-para-sistemas-de-ecuaciones" class="md-skip">
+        <a href="#fase-de-solucion-lu" class="md-skip">
           Skip to content
         </a>
       
@@ -108,7 +108,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Newton-Raphson para Sistemas
+              LUsol
             
           </span>
         </div>
@@ -335,10 +335,32 @@
                 
   
   
+    
   
   
-    <li class="md-nav__item">
-      <a href="../LUsol/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    LUsol
+    
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         
   
   
@@ -349,6 +371,35 @@
   
 
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#codigo" class="md-nav__link">
+    <span class="md-ellipsis">
+      Código
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -427,19 +478,10 @@
                 
   
   
-    
   
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-        
-      
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../newtonRaphson_sistema/" class="md-nav__link">
         
   
   
@@ -450,7 +492,6 @@
   
 
       </a>
-      
     </li>
   
 
@@ -804,6 +845,23 @@
     
   
   
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#codigo" class="md-nav__link">
+    <span class="md-ellipsis">
+      Código
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
 </nav>
                   </div>
                 </div>
@@ -818,36 +876,25 @@
 
 
 
-<h1 id="newton-raphson-para-sistemas-de-ecuaciones">Newton-Raphson para Sistemas de Ecuaciones</h1>
-<div class="highlight"><span class="filename">newtonRaphson_sistema.m</span><pre><span></span><code><span class="k">function</span><span class="w"> </span>root<span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nf">newtonRaphson_sistema</span><span class="p">(</span>func, x, tol<span class="p">)</span>
-<span class="c">% Método de Newton-Raphson para encontrar la raíz de un sistema de</span>
-<span class="c">% ecuaciones no lineales: f_i(x_1,x_2,...,x_n) = 0, para i = 1,2,...,n.</span>
-<span class="c">% USO:</span>
-<span class="c">%   root = newtonRaphson_sistema(func, x, tol)</span>
-<span class="c">% ENTRADAS:</span>
-<span class="c">%   func - función manejable que retorna el vector [f1, f2, ..., fn]</span>
-<span class="c">%   x    - vector columna con la estimación inicial [x1; x2; ...; xn]</span>
-<span class="c">%   tol  - tolerancia al error (opcional, por defecto 1.0e4 * eps)</span>
-<span class="c">% SALIDA:</span>
-<span class="c">%   root - vector solución (aproximación de la raíz)</span>
-<span class="k">if</span><span class="w"> </span><span class="nb">nargin</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">2</span><span class="p">;</span><span class="w"> </span><span class="n">tol</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="mf">1.0e4</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="nb">eps</span><span class="p">;</span><span class="w"> </span><span class="k">end</span><span class="w">             </span><span class="c">% Tolerancia por defecto</span>
-<span class="k">if</span><span class="w"> </span><span class="nb">size</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span><span class="w"> </span><span class="n">x</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">x</span><span class="o">&#39;</span><span class="p">;</span><span class="w"> </span><span class="k">end</span><span class="w">                     </span><span class="c">% Asegura que x sea columna</span>
-<span class="k">for</span><span class="w"> </span><span class="nb">i</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="mi">1</span><span class="p">:</span><span class="mi">30</span><span class="w">                                       </span><span class="c">% Máximo 30 iteraciones</span>
-<span class="w">    </span><span class="p">[</span><span class="n">jac</span><span class="p">,</span><span class="w"> </span><span class="n">f0</span><span class="p">]</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">jacobian</span><span class="p">(</span><span class="n">func</span><span class="p">,</span><span class="w"> </span><span class="n">x</span><span class="p">);</span><span class="w">                </span><span class="c">% Calcula Jacobiana y f(x)</span>
-<span class="w">    </span><span class="c">% Criterio de convergencia por magnitud de f(x)</span>
-<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="nb">sqrt</span><span class="p">(</span><span class="nb">dot</span><span class="p">(</span><span class="n">f0</span><span class="p">,</span><span class="w"> </span><span class="n">f0</span><span class="p">)</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="nb">length</span><span class="p">(</span><span class="n">x</span><span class="p">))</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">tol</span>
-<span class="w">        </span><span class="n">root</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">x</span><span class="p">;</span>
-<span class="w">        </span><span class="k">return</span>
-<span class="w">    </span><span class="k">end</span>
-<span class="w">    </span><span class="n">dx</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">jac</span><span class="w"> </span><span class="o">\</span><span class="w"> </span><span class="p">(</span><span class="o">-</span><span class="n">f0</span><span class="p">);</span><span class="w">                             </span><span class="c">% Resuelve J dx = -f</span>
-<span class="w">    </span><span class="n">x</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">x</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">dx</span><span class="p">;</span><span class="w">                                   </span><span class="c">% Actualiza solución</span>
-<span class="w">    </span><span class="c">% Criterio de convergencia por cambio en x</span>
-<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="nb">sqrt</span><span class="p">(</span><span class="nb">dot</span><span class="p">(</span><span class="n">dx</span><span class="p">,</span><span class="w"> </span><span class="n">dx</span><span class="p">)</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="nb">length</span><span class="p">(</span><span class="n">x</span><span class="p">))</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">tol</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="nb">max</span><span class="p">(</span><span class="nb">abs</span><span class="p">(</span><span class="n">x</span><span class="p">),</span><span class="w"> </span><span class="mf">1.0</span><span class="p">)</span>
-<span class="w">        </span><span class="n">root</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">x</span><span class="p">;</span>
-<span class="w">        </span><span class="k">return</span>
-<span class="w">    </span><span class="k">end</span>
+<h1 id="fase-de-solucion-lu">Fase de Solución LU</h1>
+<p>Esta función resuelve <span class="arithmatex">\(\mathbf{LUx} = \mathbf{b}\)</span> usando sustitución hacia adelante y hacia atrás. La matriz <code>A</code> contiene [L\U].</p>
+<h2 id="codigo">Código</h2>
+<div class="highlight"><pre><span></span><code><span class="k">function</span><span class="w"> </span>x<span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nf">LUsol</span><span class="p">(</span>A, b<span class="p">)</span>
+<span class="c">% Solución del sistema LUx = b</span>
+
+<span class="n">n</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nb">length</span><span class="p">(</span><span class="n">b</span><span class="p">);</span>
+
+<span class="c">% Sustitución hacia adelante (Ly = b)</span>
+<span class="k">for</span><span class="w"> </span><span class="n">k</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="mi">2</span><span class="p">:</span><span class="n">n</span>
+<span class="w">    </span><span class="n">b</span><span class="p">(</span><span class="n">k</span><span class="p">)</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">b</span><span class="p">(</span><span class="n">k</span><span class="p">)</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">A</span><span class="p">(</span><span class="n">k</span><span class="p">,</span><span class="mi">1</span><span class="p">:</span><span class="n">k</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">b</span><span class="p">(</span><span class="mi">1</span><span class="p">:</span><span class="n">k</span><span class="o">-</span><span class="mi">1</span><span class="p">);</span>
 <span class="k">end</span>
-<span class="nb">error</span><span class="p">(</span><span class="s">&#39;Muchas iteraciones: el método no convergió.&#39;</span><span class="p">);</span>
+
+<span class="c">% Sustitución hacia atrás (Ux = y)</span>
+<span class="k">for</span><span class="w"> </span><span class="n">k</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">n</span><span class="p">:</span><span class="o">-</span><span class="mi">1</span><span class="p">:</span><span class="mi">1</span>
+<span class="w">    </span><span class="n">b</span><span class="p">(</span><span class="n">k</span><span class="p">)</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="p">(</span><span class="n">b</span><span class="p">(</span><span class="n">k</span><span class="p">)</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">A</span><span class="p">(</span><span class="n">k</span><span class="p">,</span><span class="n">k</span><span class="o">+</span><span class="mi">1</span><span class="p">:</span><span class="n">n</span><span class="p">)</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">b</span><span class="p">(</span><span class="n">k</span><span class="o">+</span><span class="mi">1</span><span class="p">:</span><span class="n">n</span><span class="p">))</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="n">A</span><span class="p">(</span><span class="n">k</span><span class="p">,</span><span class="n">k</span><span class="p">);</span>
+<span class="k">end</span>
+
+<span class="n">x</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">b</span><span class="p">;</span>
 <span class="k">end</span>
 </code></pre></div>
 <hr />
