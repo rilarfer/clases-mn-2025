@@ -10,7 +10,7 @@ root2 = -1/2 + 1i*sqrt(3)/2;
 root3 = -1/2 - 1i*sqrt(3)/2;
 
 % Malla en el plano complejo
-nx = 8000; ny = 8000;
+nx = 1000; ny = 1000;
 xmin = -2; xmax = 2;
 ymin = -2; ymax = 2;
 

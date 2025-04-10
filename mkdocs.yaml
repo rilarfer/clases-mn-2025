@@ -24,11 +24,19 @@ theme:
 nav:
   - Inicio: index.md
   - Códigos:
+      - Gauss: gauss.md
+      - LUdec: LUdec.md
+      - LUsol: LUsol.md
+      - Choleski: choleski.md
       - Newton-Raphson Segura: newtonRaphson_segura.md
       - Newton Simple: newton_simple.md
       - Newton-Raphson para Sistemas: newtonRaphson_sistema.md
       - Jacobiano: jacobian.md
   - Descarga:
+      - Gauss: gauss.m
+      - LUdec: LUdec.m
+      - LUsol: LUsol.m
+      - Choleski: choleski.m
       - Bisección: bisect.m
       - Épsilon de Máquina: epsilon_maquina.m
       - Jacobiano: jacobian.m
@@ -58,4 +66,6 @@ extra:
       name: Proyecto en GitHub
   copyright:
     text: "© 2025 Ricardo Largaespada"
-    
+plugins:
+  - search
+  - include-markdown

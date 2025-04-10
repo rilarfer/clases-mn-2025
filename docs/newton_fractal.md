@@ -65,3 +65,7 @@ xlabel('$x$', 'Interpreter', 'latex', 'FontSize', 14);
 ylabel('$y$', 'Interpreter', 'latex', 'FontSize', 14);
 title('Fractal from $f(z)=z^3-1$', 'Interpreter', 'latex', 'FontSize', 16);
 ```
+
+---
+
+[⭠ Volver al inicio](index.md)

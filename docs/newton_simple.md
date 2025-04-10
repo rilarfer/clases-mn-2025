@@ -31,3 +31,7 @@ end
 root = NaN;                   % No convergió en 50 iteraciones
 end
 ```
+
+---
+
+[⭠ Volver al inicio](index.md)
