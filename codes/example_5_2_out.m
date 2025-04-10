@@ -1,4 +1,4 @@
-determinate =
+determinante =
    -77
 
 X =
