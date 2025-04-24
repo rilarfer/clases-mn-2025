@@ -31,3 +31,17 @@ Pueden acceder desde el menú lateral o directamente haciendo clic aquí:
   Puedes ver el documento directamente haciendo clic 
   <a href="18-clases_mn_2025.pdf" target="_blank">aquí</a>.
 </iframe>
+
+## 📄 Documento de Clase Hoy
+
+<iframe 
+  src="21-clases_mn_2025.pdf" 
+  width="100%" 
+  height="700px" 
+  style="border: 1px solid #ccc; border-radius: 6px;"
+  loading="lazy"
+>
+  Tu navegador no admite iframes.  
+  Puedes ver el documento directamente haciendo clic 
+  <a href="21-clases_mn_2025.pdf" target="_blank">aquí</a>.
+</iframe>
