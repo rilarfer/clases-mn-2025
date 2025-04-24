@@ -4,7 +4,7 @@ B = [6  -4;     3   2;     7  -5];
 % Descomposición LU de A
 A = LUdec(A);
 % Cálculo del determinante de A
-determinate = prod(diag(A))
+determinante = prod(diag(A))
 % Resolución de AX = B, columna por columna
 for i = 1:size(B, 2)
     X(:, i) = LUsol(A, B(:, i));
