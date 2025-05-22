@@ -9,10 +9,6 @@
       
       
       
-        <link rel="prev" href="../gauss/">
-      
-      
-        <link rel="next" href="../LUsol/">
       
       
       <link rel="icon" href="../assets/images/favicon.png">
@@ -20,7 +16,7 @@
     
     
       
-        <title>LUdec - Clases Métodos Numéricos 2025</title>
+        <title>Clase 33 — Trabajo de Integración Numérica - Clases Métodos Numéricos 2025</title>
       
     
     
@@ -72,7 +68,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#descomposicion-lu-doolittle" class="md-skip">
+        <a href="#clase-33-trabajo-de-integracion-numerica" class="md-skip">
           Skip to content
         </a>
       
@@ -108,7 +104,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              LUdec
+              Clase 33 — Trabajo de Integración Numérica
             
           </span>
         </div>
@@ -249,20 +245,18 @@
       
   
   
-    
   
   
-  
     
     
     
     
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" checked>
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
         
           
           <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
@@ -278,7 +272,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="true">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_2">
             <span class="md-nav__icon md-icon"></span>
             Códigos
@@ -312,32 +306,10 @@
                 
   
   
-    
   
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-        
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          
-  
-  
-  <span class="md-ellipsis">
-    LUdec
-    
-  </span>
-  
-
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../LUdec/" class="md-nav__link">
         
   
   
@@ -348,35 +320,6 @@
   
 
       </a>
-      
-        
-
-<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
-  
-  
-  
-    
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#codigo" class="md-nav__link">
-    <span class="md-ellipsis">
-      Código
-    </span>
-  </a>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
     </li>
   
 
@@ -852,9 +795,45 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#codigo" class="md-nav__link">
+  <a href="#problema-1-metodo-del-trapecio" class="md-nav__link">
     <span class="md-ellipsis">
-      Código
+      Problema 1 — Método del Trapecio
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#problema-2-metodo-de-simpson-13-en-mercado-digital" class="md-nav__link">
+    <span class="md-ellipsis">
+      Problema 2 — Método de Simpson 1/3 en Mercado Digital
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#problema-3-trapecio-recursivo" class="md-nav__link">
+    <span class="md-ellipsis">
+      Problema 3 — Trapecio Recursivo
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#problema-4-integracion-mixta-simpson-38-y-simpson-13" class="md-nav__link">
+    <span class="md-ellipsis">
+      Problema 4 — Integración Mixta: Simpson 3/8 y Simpson 1/3
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#evaluacion" class="md-nav__link">
+    <span class="md-ellipsis">
+      Evaluación
     </span>
   </a>
   
@@ -876,27 +855,101 @@
 
 
 
-<h1 id="descomposicion-lu-doolittle">Descomposición LU — Doolittle</h1>
-<p>Esta función realiza la descomposición LU de una matriz <span class="arithmatex">\(\mathbf{A}\)</span> sin pivoteo, sobrescribiéndola con la forma [L\U].</p>
-<h2 id="codigo">Código</h2>
-<div class="highlight"><pre><span></span><code><span class="k">function</span><span class="w"> </span>A<span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nf">LUdec</span><span class="p">(</span>A<span class="p">)</span>
-<span class="c">% LU decomposition of matrix A; returns A = [L\U]</span>
-<span class="c">% USO: A = LUdec(A)</span>
-
-<span class="n">n</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nb">size</span><span class="p">(</span><span class="n">A</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">);</span>
-
-<span class="k">for</span><span class="w"> </span><span class="n">k</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="mi">1</span><span class="p">:</span><span class="n">n</span><span class="o">-</span><span class="mi">1</span>
-<span class="w">    </span><span class="k">for</span><span class="w"> </span><span class="nb">i</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">k</span><span class="o">+</span><span class="mi">1</span><span class="p">:</span><span class="n">n</span>
-<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="n">A</span><span class="p">(</span><span class="nb">i</span><span class="p">,</span><span class="n">k</span><span class="p">)</span><span class="w"> </span><span class="o">~=</span><span class="w"> </span><span class="mf">0.0</span>
-<span class="w">            </span><span class="n">lambda</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">A</span><span class="p">(</span><span class="nb">i</span><span class="p">,</span><span class="n">k</span><span class="p">)</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="n">A</span><span class="p">(</span><span class="n">k</span><span class="p">,</span><span class="n">k</span><span class="p">);</span>
-<span class="w">            </span><span class="n">A</span><span class="p">(</span><span class="nb">i</span><span class="p">,</span><span class="n">k</span><span class="o">+</span><span class="mi">1</span><span class="p">:</span><span class="n">n</span><span class="p">)</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">A</span><span class="p">(</span><span class="nb">i</span><span class="p">,</span><span class="n">k</span><span class="o">+</span><span class="mi">1</span><span class="p">:</span><span class="n">n</span><span class="p">)</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">lambda</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">A</span><span class="p">(</span><span class="n">k</span><span class="p">,</span><span class="n">k</span><span class="o">+</span><span class="mi">1</span><span class="p">:</span><span class="n">n</span><span class="p">);</span>
-<span class="w">            </span><span class="n">A</span><span class="p">(</span><span class="nb">i</span><span class="p">,</span><span class="n">k</span><span class="p">)</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">lambda</span><span class="p">;</span>
-<span class="w">        </span><span class="k">end</span>
-<span class="w">    </span><span class="k">end</span>
-<span class="k">end</span>
-</code></pre></div>
+<h1 id="clase-33-trabajo-de-integracion-numerica">Clase 33 — Trabajo de Integración Numérica</h1>
+<p><strong>Curso : Métodos Numéricos — UNI</strong>  </p>
+<blockquote>
+<p><strong>Objetivo</strong><br />
+Aplicar técnicas de integración numérica en problemas con funciones reales y datos experimentales, utilizando únicamente código en <strong>MATLAB</strong>.</p>
+<p><strong>Instrucciones</strong><br />
+- Resuelva cada problema con el <strong>método indicado</strong>.<br />
+- Use <strong>MATLAB</strong> para el cálculo.<br />
+- Entregue un único documento en <strong>PDF</strong> que incluya:
+  - Desarrollo paso a paso.
+  - Resultados numéricos con unidades.
+  - Códigos comentados en MATLAB.
+  - Comparación con solución exacta (cuando sea posible).  </p>
+</blockquote>
 <hr />
-<p><a href="../">⭠ Volver al inicio</a></p>
+<h2 id="problema-1-metodo-del-trapecio">Problema 1 — Método del Trapecio</h2>
+<p>Un estanque tiene una profundidad variable dada por:</p>
+<div class="arithmatex">\[
+h(x) = 2 + 0.3 \cos(0.05\pi x), \quad x \in [0, 60] \text{ m}
+\]</div>
+<p>El ancho del estanque es de 5 metros. Estime el <strong>volumen total de agua</strong> usando el <strong>método del trapecio compuesto</strong> con <span class="arithmatex">\( n = 12 \)</span> subintervalos.  </p>
+<hr />
+<h2 id="problema-2-metodo-de-simpson-13-en-mercado-digital">Problema 2 — Método de Simpson 1/3 en Mercado Digital</h2>
+<p>Durante una promoción especial, la cantidad de transacciones en una plataforma de comercio electrónico se modela mediante la función</p>
+<div class="arithmatex">\[
+T(t) = 800\left(1 - e^{-0.3t}\right), \quad t \in [0, 6]
+\]</div>
+<p>donde <span class="arithmatex">\( T(t) \)</span> representa la cantidad acumulada de transacciones (en unidades) hasta el tiempo <span class="arithmatex">\( t \)</span> (en horas).</p>
+<p>Utilice el <strong>método de Simpson 1/3</strong> con <span class="arithmatex">\( n = 6 \)</span> subintervalos para estimar el <strong>total de transacciones</strong> realizadas durante las 6 horas de promoción.</p>
+<hr />
+<h2 id="problema-3-trapecio-recursivo">Problema 3 — Trapecio Recursivo</h2>
+<p>Calcule la siguiente integral mediante el <strong>método del trapecio recursivo</strong> hasta una tolerancia de <span class="arithmatex">\( 10^{-5} \)</span>:</p>
+<div class="arithmatex">\[
+I = \int_1^4 \ln(x^2 + 1)\,dx
+\]</div>
+<p>Presente la tabla de iteraciones con los valores de <span class="arithmatex">\( n \)</span> y los errores relativos.</p>
+<hr />
+<h2 id="problema-4-integracion-mixta-simpson-38-y-simpson-13">Problema 4 — Integración Mixta: Simpson 3/8 y Simpson 1/3</h2>
+<p>Un sensor registró la potencia de salida de una batería en intervalos de tiempo no uniformes, como se presenta en la siguiente tabla:</p>
+<table>
+<thead>
+<tr>
+<th>Tiempo (min)</th>
+<th style="text-align: right;">0</th>
+<th style="text-align: right;">2</th>
+<th style="text-align: right;">4</th>
+<th style="text-align: right;">6</th>
+<th style="text-align: right;">9</th>
+<th style="text-align: right;">12</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Potencia (W)</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">15</td>
+<td style="text-align: right;">25</td>
+<td style="text-align: right;">28</td>
+<td style="text-align: right;">21</td>
+<td style="text-align: right;">10</td>
+</tr>
+</tbody>
+</table>
+<p>Se observa que:
+- Los datos en los tiempos 0, 2, 4 y 6 min son equidistantes (intervalo h = 2 min) y se utilizarán con el <strong>método de Simpson 3/8</strong>.
+- Los datos en los tiempos 6, 9 y 12 min son equidistantes (intervalo h = 3 min) y se aplicará el <strong>método de Simpson 1/3</strong>.</p>
+<p>Estime la <strong>energía total entregada</strong> en los 12 minutos, utilizando este enfoque mixto. Recuerde que la energía se obtiene integrando la potencia en función del tiempo.</p>
+<hr />
+<h2 id="evaluacion">Evaluación</h2>
+<table>
+<thead>
+<tr>
+<th>Criterio</th>
+<th>Puntaje</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Resultados numéricos correctos</td>
+<td>5</td>
+</tr>
+<tr>
+<td>Comparación o análisis de error</td>
+<td>2</td>
+</tr>
+<tr>
+<td>Código MATLAB comentado y funcional</td>
+<td>3</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<p><strong>Fecha de entrega</strong>: 24 de Mayo de 2025<br />
+<strong>Formato requerido</strong>: PDF con código en MATLAB<br />
+<strong>Clase 33 — UNI 2025</strong></p>
 
 
 

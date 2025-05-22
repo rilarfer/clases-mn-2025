@@ -9,10 +9,6 @@
       
       
       
-        <link rel="prev" href="../gauss/">
-      
-      
-        <link rel="next" href="../LUsol/">
       
       
       <link rel="icon" href="../assets/images/favicon.png">
@@ -20,7 +16,7 @@
     
     
       
-        <title>LUdec - Clases Métodos Numéricos 2025</title>
+        <title>Bienvenido - Clases Métodos Numéricos 2025</title>
       
     
     
@@ -72,7 +68,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#descomposicion-lu-doolittle" class="md-skip">
+        <a href="#bienvenido" class="md-skip">
           Skip to content
         </a>
       
@@ -108,7 +104,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              LUdec
+              Bienvenido
             
           </span>
         </div>
@@ -249,20 +245,18 @@
       
   
   
-    
   
   
-  
     
     
     
     
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" checked>
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
         
           
           <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
@@ -278,7 +272,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="true">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_2">
             <span class="md-nav__icon md-icon"></span>
             Códigos
@@ -312,32 +306,10 @@
                 
   
   
-    
   
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-        
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          
-  
-  
-  <span class="md-ellipsis">
-    LUdec
-    
-  </span>
-  
-
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../LUdec/" class="md-nav__link">
         
   
   
@@ -348,35 +320,6 @@
   
 
       </a>
-      
-        
-
-<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
-  
-  
-  
-    
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#codigo" class="md-nav__link">
-    <span class="md-ellipsis">
-      Código
-    </span>
-  </a>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
     </li>
   
 
@@ -852,9 +795,27 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#codigo" class="md-nav__link">
+  <a href="#nuevos-codigos-clase-18" class="md-nav__link">
     <span class="md-ellipsis">
-      Código
+      🆕 Nuevos códigos (Clase 18):
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#asignacion" class="md-nav__link">
+    <span class="md-ellipsis">
+      📌 Asignación
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#documento-de-clase" class="md-nav__link">
+    <span class="md-ellipsis">
+      📄 Documento de Clase
     </span>
   </a>
   
@@ -876,27 +837,34 @@
 
 
 
-<h1 id="descomposicion-lu-doolittle">Descomposición LU — Doolittle</h1>
-<p>Esta función realiza la descomposición LU de una matriz <span class="arithmatex">\(\mathbf{A}\)</span> sin pivoteo, sobrescribiéndola con la forma [L\U].</p>
-<h2 id="codigo">Código</h2>
-<div class="highlight"><pre><span></span><code><span class="k">function</span><span class="w"> </span>A<span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nf">LUdec</span><span class="p">(</span>A<span class="p">)</span>
-<span class="c">% LU decomposition of matrix A; returns A = [L\U]</span>
-<span class="c">% USO: A = LUdec(A)</span>
-
-<span class="n">n</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nb">size</span><span class="p">(</span><span class="n">A</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">);</span>
-
-<span class="k">for</span><span class="w"> </span><span class="n">k</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="mi">1</span><span class="p">:</span><span class="n">n</span><span class="o">-</span><span class="mi">1</span>
-<span class="w">    </span><span class="k">for</span><span class="w"> </span><span class="nb">i</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">k</span><span class="o">+</span><span class="mi">1</span><span class="p">:</span><span class="n">n</span>
-<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="n">A</span><span class="p">(</span><span class="nb">i</span><span class="p">,</span><span class="n">k</span><span class="p">)</span><span class="w"> </span><span class="o">~=</span><span class="w"> </span><span class="mf">0.0</span>
-<span class="w">            </span><span class="n">lambda</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">A</span><span class="p">(</span><span class="nb">i</span><span class="p">,</span><span class="n">k</span><span class="p">)</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="n">A</span><span class="p">(</span><span class="n">k</span><span class="p">,</span><span class="n">k</span><span class="p">);</span>
-<span class="w">            </span><span class="n">A</span><span class="p">(</span><span class="nb">i</span><span class="p">,</span><span class="n">k</span><span class="o">+</span><span class="mi">1</span><span class="p">:</span><span class="n">n</span><span class="p">)</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">A</span><span class="p">(</span><span class="nb">i</span><span class="p">,</span><span class="n">k</span><span class="o">+</span><span class="mi">1</span><span class="p">:</span><span class="n">n</span><span class="p">)</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">lambda</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">A</span><span class="p">(</span><span class="n">k</span><span class="p">,</span><span class="n">k</span><span class="o">+</span><span class="mi">1</span><span class="p">:</span><span class="n">n</span><span class="p">);</span>
-<span class="w">            </span><span class="n">A</span><span class="p">(</span><span class="nb">i</span><span class="p">,</span><span class="n">k</span><span class="p">)</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">lambda</span><span class="p">;</span>
-<span class="w">        </span><span class="k">end</span>
-<span class="w">    </span><span class="k">end</span>
-<span class="k">end</span>
-</code></pre></div>
-<hr />
-<p><a href="../">⭠ Volver al inicio</a></p>
+<h1 id="bienvenido">Bienvenido</h1>
+<p>Este sitio contiene ejemplos y códigos del curso de Métodos Numéricos 2025.</p>
+<h2 id="nuevos-codigos-clase-18">🆕 Nuevos códigos (Clase 18):</h2>
+<ul>
+<li><a href="../gauss/">Eliminación de Gauss (<code>gauss</code>)</a></li>
+<li><a href="../LUdec/">Descomposición LU (<code>LUdec</code>)</a></li>
+<li><a href="../LUsol/">Fase de Solución LU (<code>LUsol</code>)</a></li>
+<li><a href="../choleski/">Descomposición de Choleski (<code>choleski</code>)</a></li>
+</ul>
+<h2 id="asignacion">📌 Asignación</h2>
+<p>Ya se encuentra disponible la sección de problemas propuestos para esta unidad.<br />
+Pueden acceder desde el menú lateral o directamente haciendo clic aquí:</p>
+<p>👉 <a href="../asignacion/">Ir a la Asignación</a></p>
+<blockquote>
+<p>💡 <em>Recuerda que los ejercicios deben resolverse utilizando los métodos y funciones vistas en clase. Las soluciones serán revisadas considerando precisión y organización del código.</em></p>
+</blockquote>
+<h2 id="documento-de-clase">📄 Documento de Clase</h2>
+<iframe 
+  src="18-clases_mn_2025.pdf" 
+  width="100%" 
+  height="700px" 
+  style="border: 1px solid #ccc; border-radius: 6px;"
+  loading="lazy"
+>
+  Tu navegador no admite iframes.  
+  Puedes ver el documento directamente haciendo clic 
+  <a href="18-clases_mn_2025.pdf" target="_blank">aquí</a>.
+</iframe>
 
 
 

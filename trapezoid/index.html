@@ -9,10 +9,6 @@
       
       
       
-        <link rel="prev" href="../gauss/">
-      
-      
-        <link rel="next" href="../LUsol/">
       
       
       <link rel="icon" href="../assets/images/favicon.png">
@@ -20,7 +16,7 @@
     
     
       
-        <title>LUdec - Clases Métodos Numéricos 2025</title>
+        <title>Trapecio Recursivo - Clases Métodos Numéricos 2025</title>
       
     
     
@@ -72,7 +68,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#descomposicion-lu-doolittle" class="md-skip">
+        <a href="#trapecio-recursivo" class="md-skip">
           Skip to content
         </a>
       
@@ -108,7 +104,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              LUdec
+              Trapecio Recursivo
             
           </span>
         </div>
@@ -249,20 +245,18 @@
       
   
   
-    
   
   
-  
     
     
     
     
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" checked>
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
         
           
           <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
@@ -278,7 +272,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="true">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_2">
             <span class="md-nav__icon md-icon"></span>
             Códigos
@@ -312,32 +306,10 @@
                 
   
   
-    
   
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-        
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          
-  
-  
-  <span class="md-ellipsis">
-    LUdec
-    
-  </span>
-  
-
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../LUdec/" class="md-nav__link">
         
   
   
@@ -348,35 +320,6 @@
   
 
       </a>
-      
-        
-
-<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
-  
-  
-  
-    
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#codigo" class="md-nav__link">
-    <span class="md-ellipsis">
-      Código
-    </span>
-  </a>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
     </li>
   
 
@@ -876,23 +819,33 @@
 
 
 
-<h1 id="descomposicion-lu-doolittle">Descomposición LU — Doolittle</h1>
-<p>Esta función realiza la descomposición LU de una matriz <span class="arithmatex">\(\mathbf{A}\)</span> sin pivoteo, sobrescribiéndola con la forma [L\U].</p>
+<h1 id="trapecio-recursivo">Trapecio Recursivo</h1>
+<p>Esta función aproxima el valor de una integral definida<br />
+[\int_a^b f(x)\,dx ]<br />
+usando el <strong>método del trapecio recursivo</strong>. El cálculo se refina automáticamente duplicando el número de subintervalos hasta que el cambio entre dos iteraciones sucesivas sea menor que una <strong>tolerancia dada</strong>.</p>
 <h2 id="codigo">Código</h2>
-<div class="highlight"><pre><span></span><code><span class="k">function</span><span class="w"> </span>A<span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nf">LUdec</span><span class="p">(</span>A<span class="p">)</span>
-<span class="c">% LU decomposition of matrix A; returns A = [L\U]</span>
-<span class="c">% USO: A = LUdec(A)</span>
+<div class="highlight"><pre><span></span><code><span class="k">function</span><span class="w"> </span>Ih<span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nf">trapezoid</span><span class="p">(</span>func,a,b,I2h,k<span class="p">)</span>
+<span class="c">% Regla del Trapecio recursiva.</span>
+<span class="c">% USAGE: Ih = trapezoid(func,a,b,I2h,k)</span>
+<span class="c">% func = funcion que maneja el integrando.</span>
+<span class="c">% a,b = limites de integracion.</span>
+<span class="c">% I2h = integral con 2^(k-1) paneles.</span>
+<span class="c">% Ih = integral con 2^k paneles.</span>
 
-<span class="n">n</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nb">size</span><span class="p">(</span><span class="n">A</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">);</span>
-
-<span class="k">for</span><span class="w"> </span><span class="n">k</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="mi">1</span><span class="p">:</span><span class="n">n</span><span class="o">-</span><span class="mi">1</span>
-<span class="w">    </span><span class="k">for</span><span class="w"> </span><span class="nb">i</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">k</span><span class="o">+</span><span class="mi">1</span><span class="p">:</span><span class="n">n</span>
-<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="n">A</span><span class="p">(</span><span class="nb">i</span><span class="p">,</span><span class="n">k</span><span class="p">)</span><span class="w"> </span><span class="o">~=</span><span class="w"> </span><span class="mf">0.0</span>
-<span class="w">            </span><span class="n">lambda</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">A</span><span class="p">(</span><span class="nb">i</span><span class="p">,</span><span class="n">k</span><span class="p">)</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="n">A</span><span class="p">(</span><span class="n">k</span><span class="p">,</span><span class="n">k</span><span class="p">);</span>
-<span class="w">            </span><span class="n">A</span><span class="p">(</span><span class="nb">i</span><span class="p">,</span><span class="n">k</span><span class="o">+</span><span class="mi">1</span><span class="p">:</span><span class="n">n</span><span class="p">)</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">A</span><span class="p">(</span><span class="nb">i</span><span class="p">,</span><span class="n">k</span><span class="o">+</span><span class="mi">1</span><span class="p">:</span><span class="n">n</span><span class="p">)</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">lambda</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">A</span><span class="p">(</span><span class="n">k</span><span class="p">,</span><span class="n">k</span><span class="o">+</span><span class="mi">1</span><span class="p">:</span><span class="n">n</span><span class="p">);</span>
-<span class="w">            </span><span class="n">A</span><span class="p">(</span><span class="nb">i</span><span class="p">,</span><span class="n">k</span><span class="p">)</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">lambda</span><span class="p">;</span>
-<span class="w">        </span><span class="k">end</span>
+<span class="k">if</span><span class="w"> </span><span class="n">k</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">1</span>
+<span class="w">    </span><span class="n">fa</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nb">feval</span><span class="p">(</span><span class="n">func</span><span class="p">,</span><span class="n">a</span><span class="p">);</span><span class="w"> </span><span class="n">fb</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nb">feval</span><span class="p">(</span><span class="n">func</span><span class="p">,</span><span class="n">b</span><span class="p">);</span>
+<span class="w">    </span><span class="n">Ih</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="p">(</span><span class="n">fa</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">fb</span><span class="p">)</span><span class="o">*</span><span class="p">(</span><span class="n">b</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">a</span><span class="p">)</span><span class="o">/</span><span class="mf">2.0</span><span class="p">;</span>
+<span class="k">else</span>
+<span class="w">    </span><span class="n">n</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="mi">2</span><span class="o">^</span><span class="p">(</span><span class="n">k</span><span class="o">-</span><span class="mi">2</span><span class="w"> </span><span class="p">);</span><span class="w">  </span><span class="c">% Numero de puntos nuevos</span>
+<span class="w">    </span><span class="n">h</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="p">(</span><span class="n">b</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">a</span><span class="p">)</span><span class="o">/</span><span class="n">n</span><span class="w"> </span><span class="p">;</span><span class="w"> </span><span class="c">% Espaciado de nuevos puntos</span>
+<span class="w">    </span><span class="n">x</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">h</span><span class="o">/</span><span class="mf">2.0</span><span class="p">;</span><span class="w"> </span><span class="c">% Coord. del 1er punto nuevo</span>
+<span class="w">    </span><span class="nb">sum</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="mf">0.0</span><span class="p">;</span>
+<span class="w">    </span><span class="k">for</span><span class="w"> </span><span class="nb">i</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="mi">1</span><span class="p">:</span><span class="n">n</span>
+<span class="w">        </span><span class="n">fx</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nb">feval</span><span class="p">(</span><span class="n">func</span><span class="p">,</span><span class="n">x</span><span class="p">);</span>
+<span class="w">        </span><span class="nb">sum</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nb">sum</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">fx</span><span class="p">;</span>
+<span class="w">        </span><span class="n">x</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">x</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">h</span><span class="p">;</span>
 <span class="w">    </span><span class="k">end</span>
+<span class="w">    </span><span class="n">Ih</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="p">(</span><span class="n">I2h</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">h</span><span class="o">*</span><span class="nb">sum</span><span class="p">)</span><span class="o">/</span><span class="mf">2.0</span><span class="p">;</span>
 <span class="k">end</span>
 </code></pre></div>
 <hr />
